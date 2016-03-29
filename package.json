@@ -1,0 +1,20 @@
+{
+  "name": "tesseract-gl",
+  "repository": {},
+  "dependencies": {
+    "babel-core": "5.4.0",
+    "babel-loader": "5.4.0",
+    "react": "0.14.7",
+    "react-dom": "",
+    "three": "0.75.0",
+    "webpack": "1.12.14",
+    "chroma-js": "",
+    "react-slider": "",
+    "react-addons-pure-render-mixin": ""
+  },
+  "version": "0.9.0",
+  "description": "Code to build and render a tesseract using Three.js",
+  "main": "tesseract-gl.js",
+  "author": "Richard Clark <richard@opcode.co.nz>",
+  "license": "ISC"
+}
