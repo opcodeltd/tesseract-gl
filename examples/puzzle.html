@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>Example puzzle display</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../tesseract-gl.js"></script>
+        <style>
+            body {
+                font-family: Helvetica, sans-serif;
+            }
+
+            .puzzle-item {
+                display: inline-block;
+                border: 1px solid #999999;
+                margin: 10px;
+            }
+
+            body {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+
+            .developer {
+                font-size: 80%;
+                color: #ccc;
+                background-color: #333;
+                padding: 8px;
+                margin: 10px;
+                max-width: 420px;
+            }
+
+            .slider {
+                width: 100%;
+                max-width: 440px;
+                height: 20px;
+                border: 1px solid grey;
+                margin: 4px;
+            }
+
+            .handle {
+                font-size: 0.9em;
+                text-align: center;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+            }
+
+            .slider.disabled .handle {
+                background-color: #ccc;
+                cursor: default;
+            }
+
+            .slider.disabled {
+                border: 1px solid #ccc;
+            }
+
+            .handle.active {
+                background-color: grey;
+            }
+
+            .slider .bar {
+                top: 20px;
+                height: 10px;
+            }
+
+            .slider .handle {
+                top: 1px;
+                width: 20px;
+                height: 18px;
+                line-height: 18px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="tesseract-puzzle-1">Test</div>
+        <div id="tesseract-developer">Developer view</div>
+        <script>
+            var start = new Date();
+
+            // We create the puzzle render here
+            window.TesseractGL.puzzleRender(
+                    document.getElementById('tesseract-puzzle-1'),
+                    {
+                        xy: 0,
+                        xz: Math.PI / 180 * 30,
+                        yz: Math.PI / 180 * 90,
+                        xw: 0,
+                        yw: 0,
+                        zw: Math.PI / 180 * 15,
+                        sliders: ['xy', 'xz', 'yz', 'xw'],
+                        palette: [
+                            "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff", "#770000", "#000077"],
+                        onChange: function (current) {
+                            // onChange is called on every change of angle, and contains
+                            // an object with each of the angles, plus the distance travelled total
+
+                            // Add the current time
+                            current['time'] = new Date() - start;
+
+                            // Log the current state
+                            console.log(current);
+                        }
+                    }
+            );
+        </script>
+    </body>
+</html>

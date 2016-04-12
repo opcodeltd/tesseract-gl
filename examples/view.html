@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Example puzzle display</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../tesseract-gl.js"></script>
+        <style>
+            body {
+                font-family: Helvetica, sans-serif;
+            }
+
+            .puzzle-item {
+                display: inline-block;
+                border: 1px solid #999999;
+                margin: 10px;
+            }
+
+            body {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="tesseract-view-1">Test</div>
+        <script>
+            var start = new Date();
+
+            // We create the puzzle render here
+            window.TesseractGL.viewRender(
+                    document.getElementById('tesseract-view-1'),
+                    {
+                        xy: 0,
+                        xz: Math.PI / 180 * 30,
+                        yz: Math.PI / 180 * 90,
+                        xw: 0,
+                        yw: 0,
+                        zw: Math.PI / 180 * 15,
+                        palette: [
+                            "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff", "#770000", "#000077"]
+                    }
+            );
+        </script>
+    </body>
+</html>
